@@ -1,12 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
- name: sri-app-service
- namespace: sri-staging # change per environment
+  name: sri-app-service
+  namespace: sri-staging
 spec:
- selector:
-   app: sri-app
- ports:
- - port: 80
- targetPort: 80
- type: ClusterIP
+  type: ClusterIP
+  selector:
+    app: sri-app  # Ensures traffic goes to pods with this label
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80 # Matches your Docker container port
