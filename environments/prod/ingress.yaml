@@ -1,18 +1,19 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
- name: sri-app-ingress
- namespace: sri-prod # change per environment
- annotations:
- kubernetes.io/ingress.class: "nginx"
+  name: sri-app-ingress
+  namespace: sri-prod
 spec:
- rules:
- - host: sri-app.io #dev.sri-app.internal # qa.sri-app.internal / staging.sri-app.io
- http:
- paths:
- - path: /
- pathType: Prefix
- backend:
- service:
- name: sri-app-service
- port: { number: 80 }
+  # This ensures the Production Ingress Controller picks up the resource
+  ingressClassName: nginx 
+  rules:
+  - host: sri-app.io
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: sri-app-service
+            port:
+              number: 80
