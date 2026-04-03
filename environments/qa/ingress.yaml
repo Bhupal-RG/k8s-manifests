@@ -1,18 +1,19 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
- name: sri-app-ingress
- namespace: sri-qa # change per environment
- annotations:
- kubernetes.io/ingress.class: "nginx"
+  name: sri-app-ingress
+  namespace: sri-qa
 spec:
- rules:
- - host: qa.sri-app.internal # qa.sri-app.internal / staging.sri-app.io / sri-app.io
- http:
- paths:
- - path: /
- pathType: Prefix
- backend:
- service:
- name: sri-app-service
- port: { number: 80 }
+  # Links the Ingress to the NGINX controller for the QA environment
+  ingressClassName: nginx 
+  rules:
+  - host: qa.sri-app.internal
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: sri-app-service
+            port:
+              number: 80
