@@ -18,7 +18,7 @@ spec:
         # Image updated to your actual ECR Registry
         image: 812698982757.dkr.ecr.ap-south-1.amazonaws.com/sri-ecr-repo:latest
         ports:
-        - containerPort: 8080
+        - containerPort: 80
         resources:
           requests:
             cpu: 100m
@@ -29,10 +29,10 @@ spec:
         livenessProbe:
           httpGet:
             path: /health
-            port: 8080
+            port: 80
           initialDelaySeconds: 30
         readinessProbe:
           httpGet:
             path: /health
-            port: 8080
+            port: 80
           initialDelaySeconds: 10
