@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: sri-app
-        # Image updated to your actual ECR Registry
+        # Verified ECR name with hyphen
         image: 812698982757.dkr.ecr.ap-south-1.amazonaws.com/sri-ecr-repo:latest
         ports:
         - containerPort: 80
@@ -28,11 +28,13 @@ spec:
             memory: 512Mi
         livenessProbe:
           httpGet:
-            path: /health
+            path: /  # Updated from /health to / to match Nginx index.html
             port: 80
           initialDelaySeconds: 30
+          periodSeconds: 10
         readinessProbe:
           httpGet:
-            path: /health
+            path: /  # Updated from /health to / to match Nginx index.html
             port: 80
           initialDelaySeconds: 10
+          periodSeconds: 5
