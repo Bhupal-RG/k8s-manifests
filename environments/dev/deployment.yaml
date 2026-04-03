@@ -16,7 +16,7 @@ spec:
       containers:
       - name: sri-app
         # This image tag gets updated by the pipeline automatically
-        image: 812698982757.dkr.ecr.ap-south-1.amazonaws.com/sri-ecrrepo:latest
+        image: 812698982757.dkr.ecr.ap-south-1.amazonaws.com/sri-ecr-repo:latest
         ports:
         - containerPort: 8080
         resources:
