@@ -1,12 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
- name: sri-app-service
- namespace: sri-prod # change per environment
+  name: sri-app-service
+  namespace: sri-prod
 spec:
- selector:
- app: sri-app
- ports:
- - port: 80
- targetPort: 8080
- type: ClusterIP
+  type: ClusterIP
+  selector:
+    app: sri-app  # Fixed indentation (2 spaces)
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80 # Changed from 8080 to 80 to match Docker
