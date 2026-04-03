@@ -5,7 +5,7 @@ metadata:
  namespace: sri-staging # change per environment
 spec:
  selector:
- app: sri-app
+   app: sri-app
  ports:
  - port: 80
  targetPort: 80
