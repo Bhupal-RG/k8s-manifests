@@ -1,12 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
- name: sri-app-service
- namespace: sri-qa # change per environment
+  name: sri-app-service
+  namespace: sri-qa
 spec:
- selector:
- app: sri-app
- ports:
- - port: 80
- targetPort: 8080
- type: ClusterIP
+  type: ClusterIP
+  selector:
+    app: sri-app  # Fixed: Indented 2 spaces
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80 # Matches your Docker Expose 80
