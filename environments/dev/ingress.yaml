@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+ name: sri-app-ingress
+ namespace: sri-dev # change per environment
+ annotations:
+ kubernetes.io/ingress.class: "nginx"
+spec:
+ rules:
+ - host: dev.sri-app.internal # qa.sri-app.internal / staging.sri-app.io
+ http:
+ paths:
+ - path: /
+ pathType: Prefix
+ backend:
+ service:
+ name: sri-app-service
+ port: { number: 80 }
