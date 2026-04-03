@@ -16,7 +16,7 @@ spec:
       containers:
       - name: sri-app
         # Make sure this matches your actual ECR registry
-        image: 812698982757.dkr.ecr.ap-south-1.amazonaws.com/sri-ecrrepo:latest
+        image: 812698982757.dkr.ecr.ap-south-1.amazonaws.com/sri-ecr-repo:latest
         ports:
         - containerPort: 8080
         resources:
