@@ -1,18 +1,19 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
- name: sri-app-ingress
- namespace: sri-staging # change per environment
- annotations:
- kubernetes.io/ingress.class: "nginx"
+  name: sri-app-ingress
+  namespace: sri-staging
 spec:
- rules:
- - host: staging.sri-app.io # qa.sri-app.internal / staging.sri-app.io
- http:
- paths:
- - path: /
- pathType: Prefix
- backend:
- service:
- name: sri-app-service
- port: { number: 80 }
+  # This field ensures the NGINX controller claims the resource 
+  ingressClassName: nginx 
+  rules:
+  - host: staging.sri-app.io
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: sri-app-service
+            port:
+              number: 80
